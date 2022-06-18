@@ -4,8 +4,9 @@ import { Container } from "reactstrap";
 
 import { HeaderMenu, Spinner } from "components";
 
-const HomeComponent = React.lazy(() => import("./pages/home"));
-const NewPostComponent = React.lazy(() => import("./pages/newpost"));
+const HomePage = React.lazy(() => import("./pages/home"));
+const NewPostPage = React.lazy(() => import("./pages/newpost"));
+const PostDetailPage = React.lazy(() => import("./pages/post-detail"));
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
               path="/"
               element={
                 <Suspense fallback={<Spinner />}>
-                  <HomeComponent />
+                  <HomePage />
                 </Suspense>
               }
             />
@@ -27,7 +28,15 @@ function App() {
               path="/new"
               element={
                 <Suspense fallback={<Spinner />}>
-                  <NewPostComponent />
+                  <NewPostPage />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/post/:id"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <PostDetailPage />
                 </Suspense>
               }
             />

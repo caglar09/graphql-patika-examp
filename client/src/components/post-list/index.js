@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function PostList({ posts = [] }) {
   return (
@@ -6,7 +7,9 @@ function PostList({ posts = [] }) {
       {posts.map((post) => {
         return (
           <div key={`post_${post.id}`}>
-            <h3>{post.title}</h3>
+            <Link to={`post/${post.id}`} title={post.title}>
+              <h3>{post.title}</h3>
+            </Link>
           </div>
         );
       })}

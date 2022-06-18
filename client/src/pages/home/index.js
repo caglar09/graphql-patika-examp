@@ -2,8 +2,8 @@ import React from "react";
 import { Spinner } from "reactstrap";
 import { useQuery } from "@apollo/client";
 
-import { GET_POSTS } from "../../graphql/posts";
-import PostList from "../../components/post-list";
+import { GET_POSTS } from "graphql-queries";
+import { PostList } from "components";
 
 function Home() {
   const { loading, data, error } = useQuery(GET_POSTS);

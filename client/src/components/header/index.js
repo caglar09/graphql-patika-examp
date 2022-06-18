@@ -10,7 +10,6 @@ import {
 } from "reactstrap";
 
 function HeaderMenu() {
-  console.log("loadded");
   return (
     <Navbar container="md" color="light" expand="md" light>
       <NavbarBrand href="/">Graphql Example</NavbarBrand>
