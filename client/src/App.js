@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense, Fragment } from "react";
+import { Route, Routes } from "react-router-dom";
+import { Container } from "reactstrap";
+
+import { HeaderMenu, Spinner } from "components";
+
+import { HomePage, NewPostPage } from "pages";
+
+const HomeComponent = React.lazy(() => import("./pages/home"));
+const NewPostComponent = React.lazy(() => import("./pages/newpost"));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <HeaderMenu />
+      <section>
+        <Container>
+          <Routes>
+            <Route
+              index
+              path="/"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <HomeComponent />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/new"
+              element={
+                <Suspense fallback={<Spinner />}>
+                  <NewPostComponent />
+                </Suspense>
+              }
+            />
+          </Routes>
+        </Container>
+      </section>
+    </Fragment>
   );
 }
 
