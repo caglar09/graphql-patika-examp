@@ -4,8 +4,6 @@ import { Container } from "reactstrap";
 
 import { HeaderMenu, Spinner } from "components";
 
-import { HomePage, NewPostPage } from "pages";
-
 const HomeComponent = React.lazy(() => import("./pages/home"));
 const NewPostComponent = React.lazy(() => import("./pages/newpost"));
 
